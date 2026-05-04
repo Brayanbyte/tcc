@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho - NutriMarket</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-leaf"></i>
+        NutriMarket
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="loja.html">Loja</a></li>
+        <li><a href="carrinho.html" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2><i class="fas fa-shopping-cart"></i> Seu Carrinho</h2>
+        <p>Revise seus itens e finalize sua compra com segurança.</p>
+      </div>
+
+      <div class="grid grid-2" style="align-items:start;">
+        
+        <div>
+          <div id="carrinhoVazio" style="text-align:center; padding:60px 20px; background:white; border-radius:12px; display:none;">
+            <i class="fas fa-shopping-basket" style="font-size:4rem; color:var(--text-muted); margin-bottom:20px;"></i>
+            <h3>Seu carrinho está vazio</h3>
+            <p style="color:var(--text-muted); margin-bottom:20px;">Adicione produtos da loja para começar.</p>
+            <a href="loja.html" class="btn btn-primary">Ir para Loja</a>
+          </div>
+          <table class="cart-table" id="carrinhoTable">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Qtd</th>
+                <th>Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="carrinhoBody">
+             
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cart-summary" id="resumoArea">
+          <h3 style="margin-bottom:20px; color:var(--dark-blue);">Resumo do Pedido</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotalValor">R$ 0,00</span>
+          </div>
+          <div class="summary-row">
+            <span>Frete</span>
+            <span id="freteValor">R$ 0,00</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="totalValor">R$ 0,00</span>
+          </div>
+          <button onclick="finalizarCompra()" class="btn btn-primary btn-lg" style="width:100%; margin-top:20px;">
+            <i class="fas fa-credit-card"></i> Finalizar Compra
+          </button>
+          <a href="loja.html" class="btn btn-outline" style="width:100%; margin-top:10px;">
+            Continuar Comprando
+          </a>
+        </div>
+
+      <div id="checkoutForm" style="display:none; margin-top:40px;">
+        <div class="card">
+          <h3 class="card-title"><i class="fas fa-truck"></i> Dados de Entrega e Pagamento</h3>
+          <form onsubmit="processarPagamento(event)">
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" required>
+              </div>
+            <div class="form-group">
+              <label>Endereço Completo</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label>Cidade</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>CEP</label>
+                <input type="text" class="form-control" required>
+              </div>
+            <div class="form-group">
+              <label>Forma de Pagamento</label>
+              <select class="form-control" required>
+                <option value="">Selecione</option>
+                <option value="mercado_pago">Mercado Pago</option>
+                <option value="pagseguro">PagSeguro</option>
+                <option value="pix">PIX</option>
+                <option value="boleto">Boleto Bancário</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-accent btn-lg" style="width:100%;">
+              <i class="fas fa-lock"></i> Pagar Agora
+            </button>
+          </form>
+        </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <p> NutriMarket. Todos os direitos reservados.</p>
+      </div>
+  </footer>
+
+  <script src="js/carrinho.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      if (nav.style.display === 'flex') {
+        nav.style.position = 'absolute';
+        nav.style.top = '60px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.flexDirection = 'column';
+        nav.style.background = 'var(--dark-blue)';
+        nav.style.padding = '20px';
+      }
+    }
+  </script>
+</body>
+</html>

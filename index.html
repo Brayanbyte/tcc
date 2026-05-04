@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriMarket - Saúde e Performance</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-leaf"></i>
+        NutriMarket
+      </a>
+<ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="loja.html">Loja</a></li>
+        <li class="nav-auth-item">
+          <a href="#" class="login-btn">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+          </a>
+        </li>
+        <li><a href="carrinho.html" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Transforme sua Saúde com a NutriMarket</h1>
+      <p>Calcule seu IMC, receba um plano alimentar personalizado e encontre os melhores suplementos para o seu objetivo.</p>
+      <div class="hero-buttons">
+        <a href="#calculadora" class="btn btn-lg btn-primary">
+          <i class="fas fa-calculator"></i> Calcular IMC
+        </a>
+        <a href="loja.html" class="btn btn-lg btn-outline" style="color:white;border-color:white;">
+          <i class="fas fa-store"></i> Ir para Loja
+        </a>
+      </div>
+  </header>
+
+  <section class="section" id="calculadora">
+    <div class="container">
+      <div class="section-title">
+        <h2>Calculadora de IMC</h2>
+        <p>Preencha seus dados para descobrir seu Índice de Massa Corporal e receber recomendações personalizadas.</p>
+    
+    </div>
+
+      <div style="width: 200%; margin: 0 auto;">
+      <div class="grid grid-2" style="align-items:start;">
+  
+        <div class="card fade-in">
+          <h3 class="card-title"><i class="fas fa-user-circle"></i> Seus Dados</h3>
+          <form id="imcForm">
+            <div class="form-group">
+              <label for="nome">Nome Completo</label>
+              <input type="text" id="nome" class="form-control" placeholder="Ex: João Silva" required>
+            </div>
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="idade">Idade</label>
+                <input type="number" id="idade" class="form-control" placeholder="Ex: 25" min="10" max="120" required>
+              </div>
+              <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <select id="sexo" class="form-control" required>
+                  <option value="">Selecione</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Feminino</option>
+                </select>
+              </div>
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="peso">Peso (kg)</label>
+                <input type="number" id="peso" class="form-control" placeholder="Ex: 70.5" step="0.1" min="20" max="300" required>
+              </div>
+              <div class="form-group">
+                <label for="altura">Altura (m)</label>
+                <input type="number" id="altura" class="form-control" placeholder="Ex: 1.75" step="0.01" min="0.5" max="2.5" required>
+              </div>
+            <div class="form-group">
+              <label for="objetivo">Seu Objetivo</label>
+              <select id="objetivo" class="form-control" required>
+                <option value="">Selecione seu objetivo</option>
+                <option value="perda">Perda de Peso</option>
+                <option value="ganho">Ganho de Massa Muscular</option>
+                <option value="manutencao">Manutenção e Saúde</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
+              <i class="fas fa-calculator"></i> Calcular IMC
+            </button>
+          </form>
+        </div>
+     </div>
+
+
+        <div id="resultadoArea" style="display:none;">
+          <div class="card fade-in" id="resultadoCard">
+            <h3 class="card-title"><i class="fas fa-chart-line"></i> Seu Resultado</h3>
+            <div id="imcResultado"></div>
+          <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap;">
+            <a href="dieta.html" class="btn btn-secondary btn-lg" style="flex:1;min-width:200px;">
+              <i class="fas fa-utensils"></i> Ver Plano Alimentar
+            </a>
+            <a href="loja.html" class="btn btn-accent btn-lg" style="flex:1;min-width:200px;">
+              <i class="fas fa-shopping-bag"></i> Ver Suplementos
+            </a>
+          </div>
+      </div>
+  </section>
+
+  <section class="section" style="background:white;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Por que escolher a NutriMarket?</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card text-center" style="text-align:center;">
+          <i class="fas fa-calculator" style="font-size:3rem;color:var(--primary-green);margin-bottom:15px;"></i>
+          <h3>IMC Inteligente</h3>
+          <p style="color:var(--text-muted);">Cálculo preciso com classificação completa e recomendações baseadas no seu perfil.</p>
+        </div>
+        <div class="card text-center" style="text-align:center;">
+          <i class="fas fa-apple-alt" style="font-size:3rem;color:var(--primary-green);margin-bottom:15px;"></i>
+          <h3>Planos Alimentares</h3>
+          <p style="color:var(--text-muted);">Dietas personalizadas para perda de peso, ganho de massa ou manutenção da saúde.</p>
+        </div>
+        <div class="card text-center" style="text-align:center;">
+          <i class="fas fa-capsules" style="font-size:3rem;color:var(--primary-green);margin-bottom:15px;"></i>
+          <h3>Suplementos Premium</h3>
+          <p style="color:var(--text-muted);">Loja exclusiva com whey protein, creatina, pré-treino e vitaminas das melhores marcas.</p>
+        </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4><i class="fas fa-leaf"></i> NutriMarket</h4>
+          <p style="color:rgba(255,255,255,0.7);">Sua plataforma completa de nutrição e suplementação.</p>
+        </div>
+        <div>
+          <h4>Links Rápidos</h4>
+          <a href="index.html">Início</a>
+          <a href="loja.html">Loja</a>
+          <a href="admin.html">Área Admin</a>
+        </div>
+        <div>
+          <h4>Categorias</h4>
+          <a href="loja.html">Whey Protein</a>
+          <a href="loja.html">Creatina</a>
+          <a href="loja.html">Pré-treino</a>
+          <a href="loja.html">Vitaminas</a>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p style="color:rgba(255,255,255,0.7);">contato@nutrimarket.com.br</p>
+          <p style="color:rgba(255,255,255,0.7);">(11) 99999-9999</p>
+        </div>
+      <div class="footer-bottom">
+        <p> NutriMarket. Todos os direitos reservados.</p>
+      </div>
+  </footer>
+
+  <script src="js/imc.js"></script>
+  <!-- Login Modal -->
+  <div id="loginModal" class="login-modal">
+    <div class="login-modal-content">
+      <div class="card">
+        <form id="loginForm" class="login-form" onsubmit="handleLoginForm(event)">
+          <h3><i class="fas fa-lock"></i> Acessar NutriMarket</h3>
+          
+          <div class="form-group">
+            <label for="loginEmail"><i class="fas fa-envelope"></i> Email</label>
+            <input type="email" id="loginEmail" class="form-control" placeholder="cliente@nutrimarket.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="loginSenha"><i class="fas fa-key"></i> Senha</label>
+            <input type="password" id="loginSenha" class="form-control" placeholder="Senha" required>
+          </div>
+          
+          <div class="login-actions">
+            <button type="submit" class="btn btn-primary login-btn-submit">
+              <i class="fas fa-sign-in-alt"></i> Entrar
+            </button>
+            <button type="button" class="btn btn-outline login-btn-close" onclick="esconderLoginModal()">
+              <i class="fas fa-times"></i> Cancelar
+            </button>
+          </div>
+          
+          <div class="login-help">
+            <strong>Demo:</strong> cliente@nutrimarket.com / 123<br>
+            <strong>Admin:</strong> admin@nutrimarket.com / 123
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/imc.js"></script>
+  <script src="js/login.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      if (nav.style.display === 'flex') {
+        nav.style.position = 'absolute';
+        nav.style.top = '60px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.flexDirection = 'column';
+        nav.style.background = 'var(--dark-blue)';
+        nav.style.padding = '20px';
+      }
+    }
+  </script>
+</body>
+</html>
